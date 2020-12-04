@@ -7,7 +7,7 @@ return [
         'host' => 'localhost',
         'database' => 'list',
         'user'=>'user_list',
-        'password' => "lista2020"
+        'password' => "VyohdXudtFcRdBDn"
     ]
     
 ];
