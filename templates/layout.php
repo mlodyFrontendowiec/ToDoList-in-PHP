@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1 class="title">To Do List</h1>
+    <h1 class="title"><a href="/?action=mainPage">To Do List</a></h1>
     
     <nav class="menu">
         <ul>

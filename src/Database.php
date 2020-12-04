@@ -30,8 +30,15 @@ class Database
         $query = "INSERT INTO list(title,description,created)
         VALUE ($title,$description,$created)";
 
-        dump('ok');
 
         $this->connection->exec($query);
+    }
+    public function getTask()
+    {
+        $query = "SELECT * FROM list";
+
+        $result = $this->connection->query($query);
+        $tasks = $result->fetchAll(PDO::FETCH_ASSOC);
+        return $tasks;
     }
 }

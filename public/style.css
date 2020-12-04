@@ -4,12 +4,16 @@
   margin: 0;
   padding: 0;
 }
-h1.title {
+h1 {
   text-align: center;
+}
+h1 a {
+  width: 100%;
   font-size: 70px;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   color: #2f2fa3;
-  margin-bottom: 20px;
+  text-decoration: none;
+  width: auto;
 }
 nav.menu {
   width: 60vw;
@@ -18,6 +22,7 @@ nav.menu {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  margin-top: 20px;
 }
 nav ul {
   display: flex;
@@ -70,12 +75,13 @@ label {
   color: #2f2fa3;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 600;
+  font-size: 20px;
 }
 label input {
   border: none;
   border-bottom: gray 2px solid;
   margin-top: 10px;
-  font-size: 15px;
+  font-size: 20px;
   padding: 10px;
   max-width: 30vw;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
@@ -96,4 +102,21 @@ input.send {
   cursor: pointer;
   padding: 10px 15px;
   font-weight: 600;
+}
+.table_data {
+  padding: 0;
+  font-size: 20px;
+}
+.table_header {
+  padding: 10px 20px;
+}
+th,
+td {
+  padding: 15px 0;
+}
+.table_content {
+  background-color: white;
+  color: #2f2fa3;
+  text-align: center;
+  border: none;
 }

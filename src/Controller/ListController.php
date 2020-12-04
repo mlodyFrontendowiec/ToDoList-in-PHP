@@ -33,14 +33,13 @@ class ListController
     {
         switch ($this->get['action'] ?? 'mainPage') {
             case 'mainPage':
-                $this->view->render('mainPage');
-                dump($this->post);
+                $this->view->render('mainPage', $this->getTask());
             break;
             case 'createTask':
                 $this->createTask();
             break;
             default:
-            $this->view->render('mainPage');
+            $this->view->render('mainPage', $this->getTask());
             break;
 
 
@@ -57,5 +56,10 @@ class ListController
         } elseif (empty($this->post)) {
             $this->view->render('createTask');
         };
+    }
+    public function getTask()
+    {
+        $tasks = $this->database->getTask();
+        return $tasks;
     }
 };
