@@ -33,12 +33,39 @@ class Database
 
         $this->connection->exec($query);
     }
-    public function getTask()
+    public function getTasks():array
     {
         $query = "SELECT * FROM list";
 
         $result = $this->connection->query($query);
         $tasks = $result->fetchAll(PDO::FETCH_ASSOC);
         return $tasks;
+    }
+    public function removeTask($id):void
+    {
+        $query = "DELETE FROM list WHERE id=$id LIMIT 1";
+
+        $this->connection->exec($query);
+    }
+    public function getTask($id):array
+    {
+        $query = "SELECT * FROM list WHERE id = $id";
+
+        $result = $this->connection->query($query);
+        $task = $result->fetch(PDO::FETCH_ASSOC);
+        return $task;
+    }
+    public function editTask(array $listItem, int $id):void
+    {
+        $title = $this->connection->quote($listItem['title']);
+        $description =  $this->connection->quote($listItem['description']);
+
+        
+        $query =
+        "UPDATE list
+        SET title=$title,description=$description 
+        WHERE id = $id";
+    
+        $this->connection->exec($query);
     }
 }

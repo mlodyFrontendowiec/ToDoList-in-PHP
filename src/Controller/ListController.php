@@ -33,13 +33,19 @@ class ListController
     {
         switch ($this->get['action'] ?? 'mainPage') {
             case 'mainPage':
-                $this->view->render('mainPage', $this->getTask());
+                $this->view->render('mainPage', $this->getTasks());
             break;
             case 'createTask':
                 $this->createTask();
             break;
+            case 'removeTask':
+                $this->removeTask();
+            break;
+            case 'editTask':
+                $this->editTask();
+            break;
             default:
-            $this->view->render('mainPage', $this->getTask());
+            $this->view->render('mainPage', $this->getTasks());
             break;
 
 
@@ -57,9 +63,25 @@ class ListController
             $this->view->render('createTask');
         };
     }
-    public function getTask()
+    public function getTasks():array
     {
-        $tasks = $this->database->getTask();
+        $tasks = $this->database->getTasks();
         return $tasks;
+    }
+    public function removeTask():void
+    {
+        $this->database->removeTask($this->get['id']);
+        header("Location: /");
+    }
+    public function editTask():void
+    {
+        $id = $this->get['id'];
+        if (empty($this->post)) {
+            $task = $this->database->getTask($id);
+            $this->view->render('editTask', $task);
+        } elseif (!empty($this->post)) {
+            $this->database->editTask($this->post, (int) $id);
+            header("Location: /");
+        }
     }
 };

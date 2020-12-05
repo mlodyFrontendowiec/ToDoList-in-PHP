@@ -13,6 +13,16 @@
         </td>
         <td><?php echo  $task['created'] ?>
         </td>
+        <td>
+            <a
+                href="/?action=removeTask&id=<?php echo $task['id']?>"><button
+                    class="remove">Usuń</button></a>
+        </td>
+        <td>
+            <a
+                href="/?action=editTask&id=<?php echo $task['id']?>"><button
+                    class="edit">Edytuj</button></a>
+        </td>
     </tr>
     <?php endforeach;?>
 </table>
